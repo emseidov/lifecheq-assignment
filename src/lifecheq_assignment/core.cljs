@@ -14,7 +14,7 @@
   (rf/clear-subscription-cache!)
   (let [root-el (.getElementById js/document "app")]
     (rdom/unmount-component-at-node root-el)
-    (rdom/render [views/main-panel] root-el)))
+    (rdom/render [views/main] root-el)))
 
 (defn init []
   (rf/dispatch-sync [::events/initialize-db])
