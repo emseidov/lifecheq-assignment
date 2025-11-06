@@ -1,0 +1,9 @@
+(ns lifecheq-assignment.events
+  (:require
+   [re-frame.core :as rf]
+   [lifecheq-assignment.db :as db]))
+
+(rf/reg-event-db
+ ::initialize-db
+ (fn [_ _]
+   db/default-db))
