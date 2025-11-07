@@ -74,7 +74,7 @@
         [card
          {:img {:src "/assets/family.svg"
                 :alt "Baby's birth milestone"}
-          :title "Baby's Birth"
+          :title "Baby's birth"
           :position :top}]]
        [timeline-separator
         [timeline-dot]
@@ -84,7 +84,7 @@
         [card
          {:img {:src "/assets/home.svg"
                 :alt "New home milestone"}
-          :title "New Home"}]]]
+          :title "New home"}]]]
       [timeline-item
        [timeline-opposite-content
         [card
