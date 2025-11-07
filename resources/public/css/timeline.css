@@ -1,0 +1,175 @@
+.timeline {
+  align-items: center;
+  display: flex;
+
+  .timeline-item {
+    list-style: none;
+    position: relative;
+  }
+
+  .timeline-separator {
+    align-items: center;
+    display: flex;
+    height: 16px;
+  }
+
+  .timeline-dot {
+    background-color: transparent;
+    border: 5px solid #00b897;
+    border-radius: 100%;
+    height: 8px;
+    margin: 3px;
+    width: 8px;
+
+    &.is-curr-milestone {
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .timeline-connector {
+    background-color: white;
+    border-radius: 10px;
+    height: 2px;
+    width: 140px;
+
+    &.dotted {
+      background-color: transparent;
+      margin-top: -26px;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      &:last-child {
+        margin-right: 0px;
+      }
+
+      .connector-dot {
+        background-color: white;
+        border-radius: 10px;
+        display: inline-block;
+        height: 2px;
+        margin: 0 2px;
+        width: 3px;
+      }
+    }
+  }
+
+  .timeline-content,
+  .timeline-opposite-content {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    left: -60px;
+    position: absolute;
+    text-align: center;
+    width: 136px;
+  }
+
+  .timeline-content {
+    top: 25px;
+  }
+
+  .timeline-milestone {
+    align-items: center;
+    display: flex;
+    height: 32px;
+    justify-content: center;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+    width: 90px;
+    word-wrap: break-word;
+  }
+
+  .timeline-opposite-content {
+    bottom: 25px;
+  }
+
+  .timeline-card {
+    display: flex;
+    flex-direction: column;
+    width: 136px;
+
+    /* background: #3C7F90; */
+    /* box-shadow: 0px 4px 12px 0px #00000040; */
+    &.position-top {
+      .pointer {
+        order: 2;
+        transform: rotate(180deg);
+      }
+    }
+
+    .pointer {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+
+    .pointer-line {
+      background-color: #3c7f90;
+      border-radius: 2px;
+      height: 16px;
+      margin: 10px 0;
+      width: 2px;
+    }
+
+    .pointer-triangle {
+      border-bottom: 6.5px solid #173f4b;
+      border-left: 7.5px solid transparent;
+      border-right: 7.5px solid transparent;
+      height: 0;
+      width: 0;
+    }
+
+    .content {
+      background-color: #173f4b;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      padding: 8px;
+    }
+
+    .img {
+    }
+
+    .title {
+      align-items: center;
+      color: #fff;
+      display: flex;
+      flex: 1 1 auto;
+      font-size: 14px;
+      justify-content: center;
+      line-height: 130%;
+      padding: 8px 4px;
+    }
+  }
+
+  .timeline-arrow {
+    display: inline-block;
+    height: 62px;
+    position: relative;
+    width: 6px;
+  }
+
+  .timeline-arrow::before,
+  .timeline-arrow::after {
+    background-color: #fff;
+    border-radius: 9999px;
+    content: "";
+    height: 2px;
+    position: absolute;
+    right: 0;
+    top: calc(50% - 1px);
+    transform-origin: calc(100% - 1px) 50%;
+    width: 15px;
+  }
+
+  .timeline-arrow::before {
+    transform: rotate(45deg);
+  }
+
+  .timeline-arrow::after {
+    transform: rotate(-45deg);
+  }
+}

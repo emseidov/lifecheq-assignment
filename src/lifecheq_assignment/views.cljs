@@ -4,19 +4,19 @@
    [lifecheq-assignment.subs :as subs]
    [lifecheq-assignment.utils :refer [cx]]))
 
-(defn card [{:keys [img title position]}]
+(defn timeline-card [{:keys [img title position]}]
   [:div
-   {:class (cx "card"
-               (when (= position :top) "card-top"))}
-   [:div.card-pointer
-    [:div.card-pointer-line]
-    [:div.card-pointer-triangle]]
-   [:div.card-body
-    [:div.card-img
+   {:class (cx "timeline-card"
+               (when (= position :top) "position-top"))}
+   [:div.pointer
+    [:div.pointer-line]
+    [:div.pointer-triangle]]
+   [:div.content
+    [:div.img
      [:img
       {:src (:src img)
        :alt (:alt img)}]]
-    [:div.card-title
+    [:div.title
      [:span title]]]])
 
 (defn timeline-opposite-content [& children]
@@ -34,7 +34,7 @@
 (defn timeline-connector [{:keys [type]}]
   [:div
    {:class (cx "timeline-connector"
-               (when (= type :dotted) "is-dotted"))}
+               (when (= type :dotted) "dotted"))}
    (when (= type :dotted)
      (for [_ (range 1 (/ 140 6.8))]
        [:span.connector-dot]))])
@@ -71,7 +71,7 @@
         [timeline-milestone "You are here"]]]
       [timeline-item
        [timeline-opposite-content
-        [card
+        [timeline-card
          {:img {:src "/assets/family.svg"
                 :alt "Baby's birth milestone"}
           :title "Baby's birth"
@@ -81,13 +81,13 @@
         [timeline-connector]]
        [timeline-content
         [timeline-milestone "In 1 year and 9 months"]
-        [card
+        [timeline-card
          {:img {:src "/assets/home.svg"
                 :alt "New home milestone"}
           :title "New home"}]]]
       [timeline-item
        [timeline-opposite-content
-        [card
+        [timeline-card
          {:img {:src "/assets/going-holiday.svg"
                 :alt "Holiday milestone"}
           :title "Holiday"
@@ -103,7 +103,7 @@
         [timeline-connector]]
        [timeline-content
         [timeline-milestone "In 4 years and 9 months"]
-        [card
+        [timeline-card
          {:img {:src "/assets/em-fund.svg"
                 :alt "Emergency fund milestone"}
           :title "Emergency fund"}]]]
@@ -114,13 +114,13 @@
          {:type :dotted}]]
        [timeline-content
         [timeline-milestone "In 8 years and 11 months"]
-        [card
+        [timeline-card
          {:img {:src "/assets/debt.svg"
                 :alt "Debt free milestone"}
           :title "Debt free"}]]]
       [timeline-item
        [timeline-opposite-content
-        [card
+        [timeline-card
          {:img {:src "/assets/retirement.svg"
                 :alt "Retirement milestone"}
           :title "Retire"
@@ -135,7 +135,7 @@
          {:type :arrow}]]
        [timeline-content
         [timeline-milestone "Ultimately"]
-        [card
+        [timeline-card
          {:img {:src "/assets/vision.svg"
                 :alt "Ultimate milestone"}
           :title "Make a contribution to my community thorough philantrophy"}]]]]]))
