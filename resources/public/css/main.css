@@ -27,6 +27,7 @@ body,
 
 .timeline-separator {
   display: flex;
+  height: 16px;
   align-items: center;
 }
 
@@ -38,44 +39,86 @@ body,
   border: 5px solid #00b897;
   margin: 3px;
 
-  &.is-milestone {
+  &.is-curr-milestone {
     height: 18px;
     width: 18px;
   }
 }
 
 .timeline-connector {
-  width: 100px;
+  width: 140px;
   height: 2px;
   background-color: white;
   border-radius: 10px;
+
+  &.is-dotted {
+    background-color: transparent;
+    margin-top: -26px;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+
+    .connector-dot {
+      display: inline-block;
+      width: 3px;
+      height: 2px;
+      margin: 0 2px;
+      border-radius: 10px;
+      background-color: white;
+    }
+  }
+}
+
+.timeline-content,
+.timeline-opposite-content {
+  position: absolute;
+  width: 136px;
+  text-align: center;
+  left: -60px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .timeline-content {
-  position: absolute;
   top: 25px;
-  width: 90px;
-  text-align: center;
-  left: -25%;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
 }
 
-.timeline-content-top {
-  position: absolute;
+.timeline-milestone {
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  word-wrap: break-word; /* old name */
+  overflow-wrap: break-word;
+  width: 90px;
+  margin: 0 auto;
+}
+
+.timeline-opposite-content {
   bottom: 25px;
-  width: 90px;
-  text-align: center;
-  left: -25%;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
 }
 
-.timeline-card {
+.card {
   width: 136px;
+  display: flex;
+  flex-direction: column;
+
+  /* background: #3C7F90; */
+  /* box-shadow: 0px 4px 12px 0px #00000040; */
+  &.card-top {
+    .card-pointer {
+      order: 2;
+      transform: rotate(180deg);
+    }
+  }
 }
 
-.timeline-card-pointer {
+.card-pointer {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -86,7 +129,7 @@ body,
   }
 }
 
-.triangle {
+.card-pointer-triangle {
   width: 0;
   height: 0;
   border-left: 7.5px solid transparent;
@@ -94,7 +137,7 @@ body,
   border-bottom: 6.5px solid #173f4b; /* color of the triangle */
 }
 
-.line {
+.card-pointer-line {
   margin: 10px 0;
   height: 16px;
   width: 2px;
@@ -102,31 +145,37 @@ body,
   background-color: #3c7f90;
 }
 
-.timeline-card-body {
-  height: 130px;
+.card-body {
+  display: flex;
+  flex-direction: column;
   padding: 8px;
   border-radius: 5px;
-  box-shadow: 0px 4px 12px 0px #00000040;
   background-color: #173f4b;
 
-  .timeline-card-img {
+  .card-img {
   }
 
-  .timeline-card-title {
+  .card-title {
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 4px;
     color: #fff;
+    font-size: 14px;
     line-height: 130%;
   }
 }
 
-.arrow {
+.timeline-arrow {
   position: relative;
   display: inline-block;
   width: 6px;
   height: 62px;
 }
 
-.arrow::before,
-.arrow::after {
+.timeline-arrow::before,
+.timeline-arrow::after {
   content: "";
   position: absolute;
   top: calc(50% - 1px);
@@ -138,10 +187,10 @@ body,
   transform-origin: calc(100% - 1px) 50%;
 }
 
-.arrow::before {
+.timeline-arrow::before {
   transform: rotate(45deg);
 }
 
-.arrow::after {
+.timeline-arrow::after {
   transform: rotate(-45deg);
 }

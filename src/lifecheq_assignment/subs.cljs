@@ -3,7 +3,7 @@
    [re-frame.core :as rf]))
 
 (rf/reg-sub
- ::name
+ ::milestones
  (fn [db]
-   (:name db)))
+   (:milestones db)))
 
