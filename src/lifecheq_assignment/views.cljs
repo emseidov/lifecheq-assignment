@@ -4,10 +4,8 @@
    [lifecheq-assignment.subs :as subs]
    [lifecheq-assignment.utils :refer [cx]]))
 
-(defn timeline-card [{:keys [img title position]}]
-  [:div
-   {:class (cx "timeline-card"
-               (when (= position :top) "position-top"))}
+(defn timeline-card [{:keys [img title]}]
+  [:div.timeline-card
    [:div.pointer
     [:div.pointer-line]
     [:div.pointer-triangle]]
@@ -74,8 +72,7 @@
         [timeline-card
          {:img {:src "/assets/family.svg"
                 :alt "Baby's birth milestone"}
-          :title "Baby's birth"
-          :position :top}]]
+          :title "Baby's birth"}]]
        [timeline-separator
         [timeline-dot]
         [timeline-connector]]
@@ -83,15 +80,13 @@
         [timeline-milestone "In 1 year and 9 months"]
         [timeline-card
          {:img {:src "/assets/home.svg"
-                :alt "New home milestone"}
-          :title "New home"}]]]
+                :alt "New home milestone"}}]]]
       [timeline-item
        [timeline-opposite-content
         [timeline-card
          {:img {:src "/assets/going-holiday.svg"
                 :alt "Holiday milestone"}
-          :title "Holiday"
-          :position :top}]]
+          :title "Holiday"}]]
        [timeline-separator
         [timeline-dot]
         [timeline-connector]]
@@ -123,8 +118,7 @@
         [timeline-card
          {:img {:src "/assets/retirement.svg"
                 :alt "Retirement milestone"}
-          :title "Retire"
-          :position :top}]]
+          :title "Retire"}]]
        [timeline-separator
         [timeline-dot]
         [timeline-connector
