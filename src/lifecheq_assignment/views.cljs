@@ -24,9 +24,11 @@
   [:div.timeline-opposite-content
    children])
 
-(defn timeline-milestone [& children]
+(defn timeline-milestone [{:keys [label width]}]
   [:div.timeline-milestone
-   children])
+   {:style
+    {:width width}}
+   label])
 
 (defn timeline-content [& children]
   [:div.timeline-content
@@ -69,7 +71,9 @@
          {:curr-milestone? true}]
         [timeline-connector]]
        [timeline-content
-        [timeline-milestone "You are here"]]]
+        [timeline-milestone
+         {:label  "You are here"
+          :width 60}]]]
       [timeline-item
        [timeline-opposite-content
         [timeline-card
@@ -80,7 +84,8 @@
         [timeline-dot]
         [timeline-connector]]
        [timeline-content
-        [timeline-milestone "In 1 year and 9 months"]
+        [timeline-milestone
+         {:label "In 1 year and 9 months"}]
         [timeline-card
          {:img {:src "/assets/home.svg"
                 :alt "New home milestone"}}]]]
@@ -94,13 +99,15 @@
         [timeline-dot]
         [timeline-connector]]
        [timeline-content
-        [timeline-milestone "In 3 years and 2 months"]]]
+        [timeline-milestone
+         {:label "In 3 years and 2 months"}]]]
       [timeline-item
        [timeline-separator
         [timeline-dot]
         [timeline-connector]]
        [timeline-content
-        [timeline-milestone "In 4 years and 9 months"]
+        [timeline-milestone
+         {:label "In 4 years and 9 months"}]
         [timeline-card
          {:img {:src "/assets/em-fund.svg"
                 :alt "Emergency fund milestone"}
@@ -111,7 +118,8 @@
         [timeline-connector
          {:type :dotted}]]
        [timeline-content
-        [timeline-milestone "In 8 years and 11 months"]
+        [timeline-milestone
+         {:label "In 8 years and 11 months"}]
         [timeline-card
          {:img {:src "/assets/debt.svg"
                 :alt "Debt free milestone"}
@@ -123,7 +131,6 @@
                 :alt "Retirement milestone"}
           :title "Retire"}]]
        [timeline-separator
-        [timeline-dot]
         [timeline-connector
          {:type :dotted}]]]
       [timeline-item
@@ -131,7 +138,8 @@
         [timeline-dot
          {:type :arrow}]]
        [timeline-content
-        [timeline-milestone "Ultimately"]
+        [timeline-milestone
+         {:label "Ultimately"}]
         [timeline-card
          {:img {:src "/assets/vision.svg"
                 :alt "Ultimate milestone"}

@@ -89,6 +89,10 @@
         order: 2;
         transform: rotate(180deg);
       }
+
+      &.align-left {
+        bottom: 0px;
+      }
     }
   }
 
