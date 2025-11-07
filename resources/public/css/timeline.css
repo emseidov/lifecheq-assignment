@@ -108,18 +108,24 @@
       }
     }
 
+    &.align-left {
+      align-items: flex-end;
+      position: absolute;
+      left: -50px;
+    }
+
     .pointer {
       align-items: center;
       display: flex;
       flex-direction: column;
-      margin: 0 auto;
+      margin: 0 10px;
     }
 
     .pointer-line {
       background-color: #3c7f90;
       border-radius: 2px;
       height: 16px;
-      margin: 10px 0;
+      margin: 10px 6px;
       width: 2px;
     }
 

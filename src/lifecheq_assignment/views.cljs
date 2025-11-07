@@ -4,10 +4,11 @@
    [lifecheq-assignment.subs :as subs]
    [lifecheq-assignment.utils :refer [cx]]))
 
-(defn timeline-card [{:keys [img title highlighted?]}]
+(defn timeline-card [{:keys [img title highlighted? align-left?]}]
   [:div
    {:class (cx "timeline-card"
-               (when highlighted? "highlighted"))}
+               (when highlighted? "highlighted")
+               (when align-left? "align-left"))}
    [:div.pointer
     [:div.pointer-line]
     [:div.pointer-triangle]]
@@ -135,4 +136,5 @@
          {:img {:src "/assets/vision.svg"
                 :alt "Ultimate milestone"}
           :title "Make a contribution to my community thorough philantrophy"
+          :align-left? true
           :highlighted? true}]]]]]))
