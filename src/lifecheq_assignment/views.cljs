@@ -4,7 +4,7 @@
    [lifecheq-assignment.subs :as subs]
    [lifecheq-assignment.utils :refer [cx]]))
 
-(defn timeline-card [{:keys [img title highlighted? align-left?]}]
+(defn timeline-card [{:keys [img desc highlighted? align-left?]}]
   [:div
    {:class (cx "timeline-card"
                (when highlighted? "highlighted")
@@ -13,36 +13,39 @@
     [:div.pointer-line]
     [:div.pointer-triangle]]
    [:div.content
-    [:div.img
+    [:figure.img
      [:img
       {:src (:src img)
        :alt (:alt img)}]]
-    [:div.title
-     [:span title]]]])
+    [:div.desc
+     [:span desc]]]])
+
+(defn timeline-milestone [{:keys [label width]}]
+  [:div.timeline-milestone
+   {:style {:width width}}
+   [:span label]])
 
 (defn timeline-opposite-content [& children]
   [:div.timeline-opposite-content
    children])
 
-(defn timeline-milestone [{:keys [label width]}]
-  [:div.timeline-milestone
-   {:style
-    {:width width}}
-   label])
-
 (defn timeline-content [& children]
   [:div.timeline-content
    children])
 
-(defn timeline-connector [{:keys [type]}]
-  [:div
-   {:class (cx "timeline-connector"
-               (when (= type :dotted) "dotted"))}
-   (when (= type :dotted)
-     (for [_ (range 1 (/ 140 6.8))]
-       [:span.connector-dot]))])
+(defn timeline-connector [{:keys [style length]
+                           :or {style :solid length 140}}]
+  (let [spacing 6.5]
+    [:div
+     {:class (cx "timeline-connector"
+                 (when (= style :dotted) "dotted"))
+      :style {:width length}}
+     (when (= style :dotted)
+       (for [_ (range 1 (/ length spacing))]
+         [:span.connector-dot]))]))
 
-(defn timeline-dot [{:keys [curr-milestone? type]}]
+(defn timeline-dot [{:keys [curr-milestone? type]
+                     :or {type :dot}}]
   [:div
    {:class (if (= type :arrow)
              "timeline-arrow"
@@ -69,7 +72,8 @@
        [timeline-separator
         [timeline-dot
          {:curr-milestone? true}]
-        [timeline-connector]]
+        [timeline-connector
+         {:length 67}]]
        [timeline-content
         [timeline-milestone
          {:label  "You are here"
@@ -79,60 +83,66 @@
         [timeline-card
          {:img {:src "/assets/family.svg"
                 :alt "Baby's birth milestone"}
-          :title "Baby's birth"}]]
+          :desc "Baby's birth"}]]
        [timeline-separator
         [timeline-dot]
-        [timeline-connector]]
+        [timeline-connector
+         {:length 127}]]
        [timeline-content
         [timeline-milestone
          {:label "In 1 year and 9 months"}]
         [timeline-card
          {:img {:src "/assets/home.svg"
-                :alt "New home milestone"}}]]]
+                :alt "New home milestone"}
+          :desc "New home"}]]]
       [timeline-item
        [timeline-opposite-content
         [timeline-card
          {:img {:src "/assets/going-holiday.svg"
                 :alt "Holiday milestone"}
-          :title "Holiday"}]]
+          :desc "Holiday"}]]
        [timeline-separator
         [timeline-dot]
-        [timeline-connector]]
+        [timeline-connector
+         {:length 133}]]
        [timeline-content
         [timeline-milestone
          {:label "In 3 years and 2 months"}]]]
       [timeline-item
        [timeline-separator
         [timeline-dot]
-        [timeline-connector]]
+        [timeline-connector
+         {:length 191}]]
        [timeline-content
         [timeline-milestone
          {:label "In 4 years and 9 months"}]
         [timeline-card
          {:img {:src "/assets/em-fund.svg"
                 :alt "Emergency fund milestone"}
-          :title "Emergency fund"}]]]
+          :desc "Emergency fund"}]]]
       [timeline-item
        [timeline-separator
         [timeline-dot]
         [timeline-connector
-         {:type :dotted}]]
+         {:style :dotted
+          :length 84}]]
        [timeline-content
         [timeline-milestone
          {:label "In 8 years and 11 months"}]
         [timeline-card
          {:img {:src "/assets/debt.svg"
                 :alt "Debt free milestone"}
-          :title "Debt free"}]]]
+          :desc "Debt free"}]]]
       [timeline-item
        [timeline-opposite-content
         [timeline-card
          {:img {:src "/assets/retirement.svg"
                 :alt "Retirement milestone"}
-          :title "Retire"}]]
+          :desc "Retire"}]]
        [timeline-separator
         [timeline-connector
-         {:type :dotted}]]]
+         {:style :dotted
+          :length 87}]]]
       [timeline-item
        [timeline-separator
         [timeline-dot
@@ -143,6 +153,6 @@
         [timeline-card
          {:img {:src "/assets/vision.svg"
                 :alt "Ultimate milestone"}
-          :title "Make a contribution to my community thorough philantrophy"
+          :desc "Make a contribution to my community thorough philantrophy"
           :align-left? true
           :highlighted? true}]]]]]))
