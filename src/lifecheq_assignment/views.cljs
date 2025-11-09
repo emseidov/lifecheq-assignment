@@ -60,7 +60,8 @@
          {:class (cx "timeline-item"
                      (when curr-milestone? "curr-milestone"))}] children))
 
-(defn timeline [{:keys [curr-milestone-idx]} & children]
+(defn timeline [{:keys [curr-milestone-idx]
+                 :or {curr-milestone-idx 0}} & children]
   (into
    [:ul.timeline]
    (map-indexed
