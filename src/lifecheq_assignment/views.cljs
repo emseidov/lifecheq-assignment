@@ -24,12 +24,10 @@
    [:span label]])
 
 (defn timeline-opposite-content [& children]
-  [:div.timeline-opposite-content
-   children])
+  (into [:div.timeline-opposite-content] children))
 
 (defn timeline-content [& children]
-  [:div.timeline-content
-   children])
+  (into [:div.timeline-content] children))
 
 (defn timeline-connector [{:keys [style length]
                            :or {style :solid length 140}}]
@@ -39,7 +37,8 @@
                  (when (= style :dotted) "dotted"))
       :style {:width length}}
      (when (= style :dotted)
-       (for [_ (range 1 (/ length spacing))]
+       (for [idx (range 1 (/ length spacing))]
+         ^{:key idx}
          [:span.connector-dot]))]))
 
 (defn timeline-dot [{:keys [curr-milestone? type]
@@ -51,16 +50,13 @@
                  (when curr-milestone? "is-curr-milestone")))}])
 
 (defn timeline-separator [& children]
-  [:div.timeline-separator
-   children])
+  (into [:div.timeline-separator] children))
 
 (defn timeline-item [& children]
-  [:li.timeline-item
-   children])
+  (into [:li.timeline-item] children))
 
 (defn timeline [& children]
-  [:ul.timeline
-   children])
+  (into [:ul.timeline] children))
 
 (defn main []
   [:div.main
