@@ -45,32 +45,39 @@
          ^{:key idx}
          [:span.connector-dot]))]))
 
-(defn timeline-dot [{:keys [curr-milestone? type]
+(defn timeline-dot [{:keys [type]
                      :or {type :dot}}]
   [:div
    {:class (if (= type :arrow)
              "timeline-arrow"
-             (cx "timeline-dot"
-                 (when curr-milestone? "is-curr-milestone")))}])
+             "timeline-dot")}])
 
 (defn timeline-separator [& children]
   (into [:div.timeline-separator] children))
 
-(defn timeline-item [& children]
-  (into [:li.timeline-item] children))
+(defn timeline-item [{:keys [curr-milestone?]} & children]
+  (into [:li
+         {:class (cx "timeline-item"
+                     (when curr-milestone? "curr-milestone"))}] children))
 
-(defn timeline [& children]
-  (into [:ul.timeline] children))
+(defn timeline [{:keys [curr-milestone-idx]} & children]
+  (into
+   [:ul.timeline]
+   (map-indexed
+    (fn [idx [child & grandchildren]]
+      (into [child
+             {:curr-milestone? (= idx curr-milestone-idx)}] grandchildren))
+    children)))
 
 (defn main []
   [:div.main
    ;; Timeline items can be generated dynamically from data, but we define
    ;; them explicitly here to make it easier to play with the timeline API.
    [timeline
+    {:curr-milestone-idx 0}
     [timeline-item
      [timeline-separator
-      [timeline-dot
-       {:curr-milestone? true}]
+      [timeline-dot]
       [timeline-connector
        {:length 67}]]
      [timeline-content
@@ -81,8 +88,8 @@
      [timeline-opposite-content
       [timeline-card
        {:img {:src "/assets/family.svg"
-              :alt "Baby's birth milestone"}
-        :desc "Baby's birth"}]]
+              :alt "Baby’s birth milestone"}
+        :desc "Baby’s birth"}]]
      [timeline-separator
       [timeline-dot]
       [timeline-connector

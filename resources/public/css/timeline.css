@@ -7,6 +7,19 @@
 .timeline-item {
   list-style: none;
   position: relative;
+
+  &.curr-milestone {
+    .timeline-dot {
+      border-width: 5px;
+      height: 1.8rem;
+      width: 1.8rem;
+    }
+
+    .timeline-content,
+    .timeline-opposite-content {
+      left: -5.3rem;
+    }
+  }
 }
 
 .timeline-separator {
@@ -20,12 +33,6 @@
   border: 4px solid var(--timeline-dot-color);
   border-radius: 100%;
   margin: 0.3rem;
-
-  &.is-curr-milestone {
-    border-width: 5px;
-    height: 1.8rem;
-    width: 1.8rem;
-  }
 }
 
 .timeline-connector {
