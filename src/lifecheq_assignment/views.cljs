@@ -2,7 +2,10 @@
   (:require
    [lifecheq-assignment.utils :refer [cx]]))
 
-(defn timeline-card [{:keys [img desc highlighted? align-left?]}]
+(defn timeline-card [{:keys [img desc highlighted? align-left?]
+                      :or {img {:src ""
+                                :alt "No image provided."}
+                           desc ""}}]
   [:div
    {:class (cx "timeline-card"
                (when highlighted? "highlighted")
@@ -18,7 +21,8 @@
     [:div.desc
      [:span desc]]]])
 
-(defn timeline-milestone [{:keys [label width]}]
+(defn timeline-milestone [{:keys [label width]
+                           :or {label "" width 100}}]
   [:div.timeline-milestone
    {:style {:width width}}
    [:span label]])
@@ -102,7 +106,8 @@
        {:length 133}]]
      [timeline-content
       [timeline-milestone
-       {:label "In 3 years and 2 months"}]]]
+       {:label "In 3 years and 2 months"
+        :width 90}]]]
     [timeline-item
      [timeline-separator
       [timeline-dot]
@@ -110,7 +115,8 @@
        {:length 191}]]
      [timeline-content
       [timeline-milestone
-       {:label "In 4 years and 9 months"}]
+       {:label "In 4 years and 9 months"
+        :width 90}]
       [timeline-card
        {:img {:src "/assets/em-fund.svg"
               :alt "Emergency fund milestone"}
@@ -148,6 +154,6 @@
       [timeline-card
        {:img {:src "/assets/vision.svg"
               :alt "Ultimate milestone"}
-        :desc "Make a contribution to my community thorough philantrophy"
+        :desc "Make a contribution to my community through philantrophy"
         :align-left? true
         :highlighted? true}]]]]])

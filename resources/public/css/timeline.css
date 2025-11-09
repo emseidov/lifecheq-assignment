@@ -32,7 +32,6 @@
   background-color: var(--timeline-connector-bg-color);
   border-radius: 10px;
   height: 0.2rem;
-  width: 14rem;
 
   &.dotted {
     background-color: transparent;
@@ -92,7 +91,6 @@
   line-height: 1.8rem;
   justify-content: center;
   margin: 0 auto 1.2rem;
-  width: 9.4rem;
 }
 
 .timeline-card {
@@ -151,6 +149,11 @@
   }
 
   .img {
+    align-items: center;
+    display: flex;
+    height: 7.6rem;
+    justify-content: center;
+    width: 11.4rem;
   }
 
   .desc {
