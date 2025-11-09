@@ -35,13 +35,16 @@
 
 (defn timeline-connector [{:keys [style length]
                            :or {style :solid length 140}}]
-  (let [spacing 6.5]
+  (let [spacing 7
+        offset 4
+        dotted? (= style :dotted)
+        width (if dotted? (- length offset) length)]
     [:div
      {:class (cx "timeline-connector"
-                 (when (= style :dotted) "dotted"))
-      :style {:width length}}
-     (when (= style :dotted)
-       (for [idx (range 1 (/ length spacing))]
+                 (when dotted? "dotted"))
+      :style {:width width}}
+     (when dotted?
+       (for [idx (range 0 (/ length spacing))]
          ^{:key idx}
          [:span.connector-dot]))]))
 
@@ -72,7 +75,7 @@
 
 (defn main []
   [:div.main
-   ;; Timeline items can be generated dynamically from data, but we define
+   ;; Timeline items can also be generated dynamically from data, but I define
    ;; them explicitly here to make it easier to play with the timeline API.
    [timeline
     {:curr-milestone-idx 0}
@@ -151,7 +154,7 @@
      [timeline-separator
       [timeline-connector
        {:style :dotted
-        :length 87}]]]
+        :length 90}]]]
     [timeline-item
      [timeline-separator
       [timeline-dot

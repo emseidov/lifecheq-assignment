@@ -1,7 +1,7 @@
 .timeline {
-  font-weight: 100;
   align-items: center;
   display: flex;
+  font-weight: 300;
 }
 
 .timeline-item {
@@ -18,6 +18,17 @@
     .timeline-content,
     .timeline-opposite-content {
       left: -5.3rem;
+    }
+  }
+
+  &:not(:has(.timeline-dot, .timeline-arrow)) {
+    .timeline-content,
+    .timeline-opposite-content {
+      left: -6.3rem;
+    }
+
+    .dotted {
+      margin-left: 0.4rem;
     }
   }
 }
@@ -42,7 +53,7 @@
 
   &.dotted {
     background-color: transparent;
-    margin-top: -2.4rem;
+    display: flex;
 
     .connector-dot {
       background-color: var(--timeline-connector-bg-color);
@@ -118,8 +129,8 @@
 
   &.align-left {
     align-items: flex-end;
-    position: absolute;
     left: -4.3rem;
+    position: absolute;
   }
 
   .pointer {
