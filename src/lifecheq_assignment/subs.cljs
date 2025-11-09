@@ -3,7 +3,7 @@
    [re-frame.core :as rf]))
 
 (rf/reg-sub
- ::milestones
+ ::timeline-items
  (fn [db]
-   (:milestones db)))
+   (:timeline-items db)))
 

@@ -1,7 +1,5 @@
 (ns lifecheq-assignment.views
   (:require
-   [re-frame.core :as rf]
-   [lifecheq-assignment.subs :as subs]
    [lifecheq-assignment.utils :refer [cx]]))
 
 (defn timeline-card [{:keys [img desc highlighted? align-left?]}]
@@ -65,94 +63,95 @@
    children])
 
 (defn main []
-  (let [milestones @(rf/subscribe [::subs/milestones])]
-    [:div.main
-     [timeline
-      [timeline-item
-       [timeline-separator
-        [timeline-dot
-         {:curr-milestone? true}]
-        [timeline-connector
-         {:length 67}]]
-       [timeline-content
-        [timeline-milestone
-         {:label  "You are here"
-          :width 60}]]]
-      [timeline-item
-       [timeline-opposite-content
-        [timeline-card
-         {:img {:src "/assets/family.svg"
-                :alt "Baby's birth milestone"}
-          :desc "Baby's birth"}]]
-       [timeline-separator
-        [timeline-dot]
-        [timeline-connector
-         {:length 127}]]
-       [timeline-content
-        [timeline-milestone
-         {:label "In 1 year and 9 months"}]
-        [timeline-card
-         {:img {:src "/assets/home.svg"
-                :alt "New home milestone"}
-          :desc "New home"}]]]
-      [timeline-item
-       [timeline-opposite-content
-        [timeline-card
-         {:img {:src "/assets/going-holiday.svg"
-                :alt "Holiday milestone"}
-          :desc "Holiday"}]]
-       [timeline-separator
-        [timeline-dot]
-        [timeline-connector
-         {:length 133}]]
-       [timeline-content
-        [timeline-milestone
-         {:label "In 3 years and 2 months"}]]]
-      [timeline-item
-       [timeline-separator
-        [timeline-dot]
-        [timeline-connector
-         {:length 191}]]
-       [timeline-content
-        [timeline-milestone
-         {:label "In 4 years and 9 months"}]
-        [timeline-card
-         {:img {:src "/assets/em-fund.svg"
-                :alt "Emergency fund milestone"}
-          :desc "Emergency fund"}]]]
-      [timeline-item
-       [timeline-separator
-        [timeline-dot]
-        [timeline-connector
-         {:style :dotted
-          :length 84}]]
-       [timeline-content
-        [timeline-milestone
-         {:label "In 8 years and 11 months"}]
-        [timeline-card
-         {:img {:src "/assets/debt.svg"
-                :alt "Debt free milestone"}
-          :desc "Debt free"}]]]
-      [timeline-item
-       [timeline-opposite-content
-        [timeline-card
-         {:img {:src "/assets/retirement.svg"
-                :alt "Retirement milestone"}
-          :desc "Retire"}]]
-       [timeline-separator
-        [timeline-connector
-         {:style :dotted
-          :length 87}]]]
-      [timeline-item
-       [timeline-separator
-        [timeline-dot
-         {:type :arrow}]]
-       [timeline-content
-        [timeline-milestone
-         {:label "Ultimately"}]
-        [timeline-card
-         {:img {:src "/assets/vision.svg"
-                :alt "Ultimate milestone"}
-          :desc "Make a contribution to my community thorough philantrophy"
-          :align-left? true
-          :highlighted? true}]]]]]))
+  [:div.main
+   ;; Timeline items can be generated dynamically from data, but we define
+   ;; them explicitly here to make it easier to play with the timeline API.
+   [timeline
+    [timeline-item
+     [timeline-separator
+      [timeline-dot
+       {:curr-milestone? true}]
+      [timeline-connector
+       {:length 67}]]
+     [timeline-content
+      [timeline-milestone
+       {:label  "You are here"
+        :width 60}]]]
+    [timeline-item
+     [timeline-opposite-content
+      [timeline-card
+       {:img {:src "/assets/family.svg"
+              :alt "Baby's birth milestone"}
+        :desc "Baby's birth"}]]
+     [timeline-separator
+      [timeline-dot]
+      [timeline-connector
+       {:length 127}]]
+     [timeline-content
+      [timeline-milestone
+       {:label "In 1 year and 9 months"}]
+      [timeline-card
+       {:img {:src "/assets/home.svg"
+              :alt "New home milestone"}
+        :desc "New home"}]]]
+    [timeline-item
+     [timeline-opposite-content
+      [timeline-card
+       {:img {:src "/assets/going-holiday.svg"
+              :alt "Holiday milestone"}
+        :desc "Holiday"}]]
+     [timeline-separator
+      [timeline-dot]
+      [timeline-connector
+       {:length 133}]]
+     [timeline-content
+      [timeline-milestone
+       {:label "In 3 years and 2 months"}]]]
+    [timeline-item
+     [timeline-separator
+      [timeline-dot]
+      [timeline-connector
+       {:length 191}]]
+     [timeline-content
+      [timeline-milestone
+       {:label "In 4 years and 9 months"}]
+      [timeline-card
+       {:img {:src "/assets/em-fund.svg"
+              :alt "Emergency fund milestone"}
+        :desc "Emergency fund"}]]]
+    [timeline-item
+     [timeline-separator
+      [timeline-dot]
+      [timeline-connector
+       {:style :dotted
+        :length 84}]]
+     [timeline-content
+      [timeline-milestone
+       {:label "In 8 years and 11 months"}]
+      [timeline-card
+       {:img {:src "/assets/debt.svg"
+              :alt "Debt free milestone"}
+        :desc "Debt free"}]]]
+    [timeline-item
+     [timeline-opposite-content
+      [timeline-card
+       {:img {:src "/assets/retirement.svg"
+              :alt "Retirement milestone"}
+        :desc "Retire"}]]
+     [timeline-separator
+      [timeline-connector
+       {:style :dotted
+        :length 87}]]]
+    [timeline-item
+     [timeline-separator
+      [timeline-dot
+       {:type :arrow}]]
+     [timeline-content
+      [timeline-milestone
+       {:label "Ultimately"}]
+      [timeline-card
+       {:img {:src "/assets/vision.svg"
+              :alt "Ultimate milestone"}
+        :desc "Make a contribution to my community thorough philantrophy"
+        :align-left? true
+        :highlighted? true}]]]]])
