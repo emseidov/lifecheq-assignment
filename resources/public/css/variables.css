@@ -1,4 +1,26 @@
 :root {
   --font-family: "IBM Plex Sans", system-ui, sans-serif;
-  --color-bg: #215a6b;
+
+  /* Base colors */
+  --color-black-25: rgba(0, 0, 0, 0.25);
+  --color-green: #00b897;
+  --color-teal: #3c7f90;
+  --color-teal-dark: #215a6b;
+  --color-teal-darker: #173f4b;
+  --color-white: #ffffff;
+  --color-white-60: rgba(255, 255, 255, 0.6);
+
+  /* Main view colors */
+  --main-bg-color: var(--color-teal-dark);
+
+  /* Timeline view colors */
+  --timeline-dot-color: var(--color-green);
+  --timeline-connector-bg-color: var(--color-white);
+  --timeline-content-color: var(--color-white-60);
+  --timeline-card-bg-color: var(--color-teal-darker);
+  --timeline-card-highlighted-bg-color: var(--color-teal);
+  --timeline-card-shadow-color: var(--color-black-25);
+  --timeline-card-pointer-line-bg-color: var(--color-teal);
+  --timeline-card-title-color: var(--color-white);
+  --timeline-arrow-color: var(--color-white);
 }

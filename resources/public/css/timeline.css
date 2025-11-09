@@ -1,194 +1,194 @@
 .timeline {
+  font-weight: 100;
   align-items: center;
   display: flex;
+}
 
-  .timeline-item {
-    list-style: none;
-    position: relative;
+.timeline-item {
+  list-style: none;
+  position: relative;
+}
+
+.timeline-separator {
+  align-items: center;
+  display: flex;
+  height: 1.6rem;
+}
+
+.timeline-dot {
+  background-color: transparent;
+  border: 4px solid var(--timeline-dot-color);
+  border-radius: 100%;
+  margin: 0.3rem;
+
+  &.is-curr-milestone {
+    border-width: 5px;
+    height: 1.8rem;
+    width: 1.8rem;
   }
+}
 
-  .timeline-separator {
-    align-items: center;
-    display: flex;
-    height: 16px;
-  }
+.timeline-connector {
+  background-color: var(--timeline-connector-bg-color);
+  border-radius: 10px;
+  height: 0.2rem;
+  width: 14rem;
 
-  .timeline-dot {
+  &.dotted {
     background-color: transparent;
-    border: 5px solid #00b897;
-    border-radius: 100%;
-    height: 8px;
-    margin: 3px;
-    width: 8px;
+    margin-top: -2.4rem;
 
-    &.is-curr-milestone {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  .timeline-connector {
-    background-color: white;
-    border-radius: 10px;
-    height: 2px;
-    width: 140px;
-
-    &.dotted {
-      background-color: transparent;
-      margin-top: -26px;
+    .connector-dot {
+      background-color: var(--timeline-connector-bg-color);
+      border-radius: 10px;
+      display: inline-block;
+      height: 0.2rem;
+      margin: 0 0.2rem;
+      width: 0.3rem;
 
       &:first-child {
-        margin-left: 0px;
+        margin-left: 0;
       }
 
       &:last-child {
-        margin-right: 0px;
-      }
-
-      .connector-dot {
-        background-color: white;
-        border-radius: 10px;
-        display: inline-block;
-        height: 2px;
-        margin: 0 2px;
-        width: 3px;
+        margin-right: 0;
       }
     }
   }
+}
 
-  .timeline-content,
-  .timeline-opposite-content {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    left: -60px;
-    position: absolute;
-    text-align: center;
-    width: 136px;
-  }
+.timeline-content,
+.timeline-opposite-content {
+  color: var(--timeline-content-color);
+  font-size: 1.4rem;
+  left: -5.75rem;
+  position: absolute;
+  text-align: center;
+  width: 13.6rem;
+}
 
-  .timeline-content {
-    top: 25px;
-  }
+.timeline-content {
+  top: 2.4rem;
+}
 
-  .timeline-milestone {
-    align-items: center;
-    display: flex;
-    height: 32px;
-    justify-content: center;
-    margin: 0 auto;
-    overflow-wrap: break-word;
-    width: 90px;
-    word-wrap: break-word;
-  }
-
-  .timeline-opposite-content {
-    bottom: 25px;
-
-    .timeline-card {
-      .pointer {
-        order: 2;
-        transform: rotate(180deg);
-      }
-
-      &.align-left {
-        bottom: 0px;
-      }
-    }
-  }
+.timeline-opposite-content {
+  bottom: 2.5rem;
 
   .timeline-card {
-    display: flex;
-    flex-direction: column;
-    width: 136px;
-
-    &.highlighted {
-      .pointer-triangle {
-        border-bottom-color: #3c7f90;
-      }
-
-      .content {
-        background-color: #3c7f90;
-        box-shadow: 0px 4px 12px 0px #00000040;
-      }
-    }
-
     &.align-left {
-      align-items: flex-end;
-      position: absolute;
-      left: -50px;
+      bottom: 0rem;
     }
-
     .pointer {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      margin: 0 10px;
+      order: 2;
+      transform: rotate(180deg);
     }
+  }
+}
 
-    .pointer-line {
-      background-color: #3c7f90;
-      border-radius: 2px;
-      height: 16px;
-      margin: 10px 6px;
-      width: 2px;
-    }
+.timeline-milestone {
+  align-items: center;
+  display: flex;
+  height: 3.2rem;
+  line-height: 1.8rem;
+  justify-content: center;
+  margin: 0 auto 1.2rem;
+  width: 9.4rem;
+}
 
+.timeline-card {
+  display: flex;
+  flex-direction: column;
+  width: 13rem;
+
+  &.highlighted {
     .pointer-triangle {
-      border-bottom: 6.5px solid #173f4b;
-      border-left: 7.5px solid transparent;
-      border-right: 7.5px solid transparent;
-      height: 0;
-      width: 0;
+      border-bottom-color: var(--timeline-card-highlighted-bg-color);
     }
 
     .content {
-      background-color: #173f4b;
-      border-radius: 5px;
-      display: flex;
-      flex-direction: column;
-      padding: 8px;
-    }
-
-    .img {
-    }
-
-    .title {
-      align-items: center;
-      color: #fff;
-      display: flex;
-      flex: 1 1 auto;
-      font-size: 14px;
-      justify-content: center;
-      line-height: 130%;
-      padding: 8px 4px;
+      background-color: var(--timeline-card-highlighted-bg-color);
+      box-shadow: 0 4px 12px 0px var(--timeline-card-shadow-color);
     }
   }
 
-  .timeline-arrow {
-    display: inline-block;
-    height: 62px;
-    position: relative;
-    width: 6px;
+  &.align-left {
+    align-items: flex-end;
+    position: absolute;
+    left: -4.3rem;
   }
 
-  .timeline-arrow::before,
-  .timeline-arrow::after {
-    background-color: #fff;
+  .pointer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1.6rem;
+  }
+
+  .pointer-line {
+    background-color: var(--timeline-card-pointer-line-bg-color);
+    border-radius: 2px;
+    height: 1.6rem;
+    margin: 0rem 0.6rem 0.8rem;
+    width: 0.2rem;
+  }
+
+  .pointer-triangle {
+    border-bottom: 6px solid var(--timeline-card-bg-color);
+    border-left: 7.5px solid transparent;
+    border-right: 7.5px solid transparent;
+    height: 0;
+    width: 0;
+  }
+
+  .content {
+    background-color: var(--timeline-card-bg-color);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    min-height: 13.6rem;
+    padding: 0.8rem;
+    box-shadow: 0 4px 12px 0px var(--timeline-card-shadow-color);
+  }
+
+  .img {
+  }
+
+  .desc {
+    align-items: center;
+    color: var(--timeline-card-title-color);
+    display: flex;
+    flex: 1 1 auto;
+    font-size: 1.4rem;
+    justify-content: center;
+    line-height: 130%;
+    padding: 0.4rem 0.8rem 0;
+  }
+}
+
+.timeline-arrow {
+  display: inline-block;
+  height: 6.2rem;
+  position: relative;
+  width: 0.6rem;
+
+  &::before,
+  &::after {
+    background-color: var(--timeline-arrow-color);
     border-radius: 9999px;
     content: "";
-    height: 2px;
+    height: 0.2rem;
     position: absolute;
-    right: 0;
-    top: calc(50% - 1px);
-    transform-origin: calc(100% - 1px) 50%;
-    width: 15px;
+    right: -0.3rem;
+    top: calc(50% - 0.1rem);
+    transform-origin: calc(100% - 0.1rem) 50%;
+    width: 1.3rem;
   }
 
-  .timeline-arrow::before {
+  &::before {
     transform: rotate(45deg);
   }
 
-  .timeline-arrow::after {
+  &::after {
     transform: rotate(-45deg);
   }
 }
